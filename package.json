@@ -1,0 +1,15 @@
+{
+  "name": "bookCollectionServer",
+  "version": "0.1.0",
+  "description": "A simple REST server that gets a list of book information using Google Books API for a collection of ebooks in the local file system",
+  "main": "rest_server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^3.5.1",
+    "request": "^2.34.0"
+  }
+}

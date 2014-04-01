@@ -1,0 +1,55 @@
+body {
+	font-family: "Arial","Helvetica",sans-serif;
+	font-size: 12px;
+	background-color: #EFEFEF;
+	margin: 0px;
+}
+#booksapp #header {
+	padding: 20px;
+	color: #39B1C6;
+	font-weight: bold;
+	background-color: #32313B;
+}
+#booksapp ul {
+	list-style-type: none;
+	padding-top: 20px;
+}
+#booksapp #main {
+	overflow-y: scroll;
+	height: 670px;
+	width: 100%;
+	background-color: #EFEFEF;
+}
+#booklist .view {
+	width: 200px;
+	height: 320px;
+	float: left;
+	padding: 0px 10px 10px 0px;
+	position: relative;
+}
+#booklist .view img {
+	padding: 0px 0px 5px 0px;
+}
+#booklist .view label {
+	display: block;
+}
+#booklist .view .title{
+	font-weight: bold;
+}
+#moreInfo {
+	padding: 20px;
+	color: #39B1C6;
+	font-weight: bold;
+}
+#loadingText {
+	display: inline;
+	float: right;
+	color: #39B1C6;
+	font-weight: bold;
+}
+#errorText {
+	display: inline;
+	float: right;
+	color: #EC3F8C;
+	font-weight: bold;
+}
