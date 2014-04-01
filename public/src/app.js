@@ -65,7 +65,7 @@ app.BookList = Backbone.Collection.extend({
 // instance of the Collection
 app.bookList = new app.BookList();
 
-// renders individual todo items list (li)
+// renders individual book
 app.BookView = Backbone.View.extend({
     tagName: 'li',
     template: _.template($('#item-template').html()),
@@ -79,13 +79,13 @@ app.BookView = Backbone.View.extend({
     }
 });
 
-// renders the full list of todo items calling TodoView for each one.
 app.AppView = Backbone.View.extend({
     el: '#booksapp',
     initialize: function () {
         this.loading = false;
         app.bookList.on('reset', this.addAll, this);
         var that = this;
+		// infinite scroll to load more items
         $('#main').bind('scroll', function () {
             var triggerPoint = 100; // 100px from the bottom
             if (!that.loading && $('#main')[0].scrollTop + $('#main')[0].clientHeight + triggerPoint > $('#main')[0].scrollHeight) {
@@ -102,10 +102,7 @@ app.AppView = Backbone.View.extend({
     addAll: function () {
         this.loading = true;
         this.$('#booklist').html(''); // clean the list
-        switch (window.filter) {
-            default: app.bookList.each(this.addOne, this);
-            break;
-        }
+        app.bookList.each(this.addOne, this);
         this.loading = false;
         $('#loadingText').hide();
     }
@@ -125,7 +122,6 @@ app.Router = Backbone.Router.extend({
 			app.bookList.fetch({
 				success: function (model, response, options) {
 					$('#errorText').hide();
-					console.log(response);
 					if(response.length == 0) {
 						//Ran out of books to display
 						app.bookList.page--;
@@ -144,9 +140,6 @@ app.Router = Backbone.Router.extend({
     }
 });
 
-//--------------
-// Initializers
-//--------------   
 app.router = new app.Router();
 Backbone.history.start();
 app.appView = new app.AppView();
